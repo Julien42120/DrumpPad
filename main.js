@@ -1,13 +1,18 @@
 const keys = document.querySelectorAll(".key");
 const audios = document.querySelectorAll("audio");
+const beatBoxBtn = document.querySelector("#beat-box");
 
 window.addEventListener("keydown", function (event) {
     keys.forEach(clef => {
         if (clef.dataset.key == event.keyCode) {
             clef.classList.add('playing', 'sound')
+            clef.addEventListener('transitionend', function () {
+                clef.classList.remove('playing', 'sound')
+            })
             audios.forEach(audio => {
                 if (audio.dataset.key == event.keyCode) {
                     audio.play();
+                    audio.currentTime = 0
                     
     
                 }
@@ -16,19 +21,129 @@ window.addEventListener("keydown", function (event) {
     });
 })
 
-window.addEventListener("keyup", function (event) {
-    keys.forEach(clef => {
-        if (clef.dataset.key == event.keyCode) {
-            clef.classList.remove('playing', 'sound')
-            audios.forEach(audio => {
-                if (audio.dataset.key == event.keyCode) {
-                    audio.pause();
-                    audio.currentTime = 0
-                }
-            })
-        }
-    });
-})
+
+
+beatBoxBtn.addEventListener ('click' , beatBox)
+function beatBox () {
+    function simulateKey (keyCode) {
+        let eventKey = new Event ("keydown" , {
+            bubbles:true
+        });
+        eventKey.keyCode = keyCode;
+
+        window.dispatchEvent(eventKey);
+    }
+    function playBeat(keyCode, time) {
+        return new Promise ((resolve, reject) => {
+             setTimeout(() => {
+                resolve( simulateKey(keyCode) )
+            }, time);
+
+            
+        }) 
+    }
+    
+    playBeat(65, 400).then(function () {
+        return  playBeat(87, 200)
+    }).then(function () {
+        return  playBeat(65, 200)
+    }).then(function () {
+        return  playBeat(87, 200)
+    }).then(function () {
+        return  playBeat(87, 400)
+    }).then(function () {
+        return  playBeat(65, 200)
+    }).then(function () {
+        return  playBeat(87, 200)
+    }).then(function () {
+        return  playBeat(87, 400)
+    }).then(function () {
+        return  playBeat(65, 200)
+    }).then(function () {
+        return  playBeat(87, 200)
+    }).then(function () {
+        return  playBeat(87, 400)
+    }).then(function () {
+        return  playBeat(65, 200)
+    }).then(function () {
+        return  playBeat(87, 200)
+    }).then(function () {
+        return  playBeat(87, 400)
+    }).then(function () {
+        return  playBeat(65, 200)
+    }).then(function () {
+        return  playBeat(87, 200)
+    }).then(function () {
+        return  playBeat(87, 400)
+    }).then(function () {
+        return  playBeat(65, 200)
+    }).then(function () {
+        return  playBeat(87, 200)
+    }).then(function () {
+        return  playBeat(87, 400)
+    }).then(function () {
+        return  playBeat(65, 200)
+    }).then(function () {
+        return  playBeat(87, 200)
+    }).then(function () {
+        return  playBeat(87, 400)
+    }).then(function () {
+        return  playBeat(65, 200)
+        
+    }).then(function () {
+        return  playBeat(68, 200)
+    }).then(function () {
+        return  playBeat(68, 400)
+    }).then(function () {
+        return  playBeat(65, 200)
+    }).then(function () {
+        return  playBeat(68, 200)
+    }).then(function () {
+        return  playBeat(68, 400)
+    }).then(function () {
+        return  playBeat(65, 200)
+    }).then(function () {
+        return  playBeat(68, 200)
+    }).then(function () {
+        return  playBeat(68, 400)
+    }).then(function () {
+        return  playBeat(65, 200)
+    }).then(function () {
+        return  playBeat(68, 200)
+    }).then(function () {
+        return  playBeat(68, 400)
+    }).then(function () {
+        return  playBeat(65, 200)
+    }).then(function () {
+        return  playBeat(68, 200)
+    }).then(function () {
+        return  playBeat(68, 400)
+    }).then(function () {
+        return  playBeat(65, 200)
+    }).then(function () {
+        return  playBeat(68, 200)
+    }).then(function () {
+        return  playBeat(68, 400)
+    }).then(function () {
+        return  playBeat(65, 200)
+    }).then(function () {
+        return  playBeat(68, 200)
+    }).then(function () {
+        return  playBeat(68, 400)
+    }).then(function () {
+        return  playBeat(65, 200)
+    }).then(function () {
+        return  playBeat(68, 200)
+    }).then(function () {
+        return  playBeat(68, 400)
+    }).then(function () {
+        return  playBeat(65, 200)
+    }).then(function () {
+        return  playBeat(68, 200)
+    }).then(function () {
+        return  playBeat(68, 400)
+    })
+}
 
 
 
