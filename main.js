@@ -24,7 +24,7 @@ window.addEventListener("keydown", function (event) {
 
 
 beatBoxBtn.addEventListener ('click' , beatBox)
-function beatBox () {
+/* async */ function beatBox () {
     function simulateKey (keyCode) {
         let eventKey = new Event ("keydown" , {
             bubbles:true
@@ -42,6 +42,9 @@ function beatBox () {
             
         }) 
     }
+    
+
+    /* await playBeat (65,400) */
     
     playBeat(65, 400).then(function () {
         return  playBeat(87, 200)
